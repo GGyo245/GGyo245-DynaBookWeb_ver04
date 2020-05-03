@@ -1,0 +1,100 @@
+@charset "UTF-8";
+.slidetitleimg{
+    width: 100%;
+    border-radius: 17px;
+    background: linear-gradient(to right,rgba(0,0,0,.2) 0,rgba(0,0,0,0) 5%,rgba(0,0,0,0) 95%,rgba(0,0,0,.2) 100% );
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.2) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    border: solid 1px rgba(0,0,0,.1);
+}
+.slick-slide {
+    margin: 0 15px;
+}
+.your-class{
+    margin-left: 15%;
+    margin-right: 15%;
+    top: 8%;
+}
+.your-class .slick-prev{
+	background: url(img/icon/leftArrow.svg) no-repeat;
+    width: 78px;
+    height: 78px;
+    text-indent: -9999px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    margin-left: -59%;
+    margin-top: -5%;
+}
+.your-class .slick-next{
+	background: url(img/icon/rightArrow.svg) no-repeat;
+    width: 78px;
+    height: 78px;
+    text-indent: -9999px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    position: absolute;
+   	left: 102%;
+    top: 50%;
+    margin-right: -61%;
+    margin-top: -5%;
+}
+#slide2back{
+	background: #17202e;
+    height: 100%;
+}
+#slide3back{
+	background: #fff;
+    height: 100%;
+}
+.booktextType1{
+	text-align: center;
+    color: #fff;
+    padding-top: 10px;
+    font-family: maplestory2;
+    font-size: smaller;
+}
+.booktextType2{
+	text-align: center;
+    color: black;
+    padding-top: 10px;
+    font-family: maplestory2;
+    font-size: smaller;
+}
+.category{
+    margin-left: 16%;
+    margin-right: 15%;
+    font-size: x-large;
+    padding-top: 1%;
+}
+#categoryText1{
+    color: #fff;
+    font-family: maplestory2;
+    font-size: xx-large;
+    margin-top: 1%;
+}
+#categoryText2{
+	color:black;
+	font-family: maplestory2;
+	 font-size: xx-large;
+    margin-top: 1%;
+	
+}
+
+@media ( min-width: 768px ) {
+	.your-class .slick-prev{
+		left: 54%;
+	}
+}

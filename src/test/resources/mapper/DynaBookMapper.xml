@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.DynaBookMapper">
+
+<select id="selectNewBookFromGenre" parameterType="string" resultType="book">
+	select
+	    booknumber
+	    ,title
+	    ,penname
+	    ,subtitle
+	    ,TO_CHAR(bookdate,'YYYY-MM-DD') AS bookdate
+	    ,genre
+	    ,introduce
+	    ,book_usernumber
+	from
+	    dynabook
+	where
+	    genre = upper(#{GENRE})
+	order by
+		bookdate desc
+</select>
+
+<select id="selectBookOne" parameterType="int" resultType="book">
+	select
+	    booknumber
+	    ,title
+	    ,penname
+	    ,subtitle
+	    ,TO_CHAR(bookdate,'YYYY-MM-DD') AS bookdate
+	    ,genre
+	    ,introduce
+	    ,book_usernumber
+	from
+	    dynabook
+	where
+	    booknumber = #{booknumber}
+</select>
+
+<select id="selectBooksFromTitle" parameterType="map" resultType="hashmap">
+	select
+        booknumber
+	    ,title
+	    ,penname
+	    ,subtitle
+	    ,TO_CHAR(bookdate,'YYYY-MM-DD') AS bookdate
+	    ,genre
+	    ,introduce
+        ,(select count(*) from dynabookpart where dynabookpart.PART_BOOKNUMBER = booknumber) as bookpartcount
+        ,(select sum(price) from dynabookpart where dynabookpart.PART_BOOKNUMBER = booknumber) as bookpartallprice
+        ,(select sum(hits) from dynabookpart where dynabookpart.PART_BOOKNUMBER = booknumber) as bookparthits
+        ,(select max(price) from dynabookpart where dynabookpart.PART_BOOKNUMBER = booknumber) as bookpartprice
+        ,NVL((select count(*) from dynabookcomment inner join dynabookpart on COMMENT_BOOKPARTNUMBER = BOOKPARTNUMBER where PART_BOOKNUMBER = booknumber), 0) as reviewcount
+        ,book_usernumber
+	from
+	    dynabook
+	where
+	    lower(REPLACE(title,' ','')) like lower(REPLACE('%'||#{title}||'%',' ','')) or lower(penname) like lower('%'||#{title}||'%')
+	order by
+		<if test="order == ''">
+			bookparthits desc
+		</if>
+		<if test="order == 'new'">
+			bookdate desc
+		</if>
+		<if test="order == 'price'">
+			bookpartallprice asc
+		</if>
+		<if test="order == 'review'">
+			reviewcount desc
+		</if>
+</select>  
+	
+<insert id="insertDynabook" parameterType="book" useGeneratedKeys="true" keyProperty="booknumber" keyColumn="booknumber">
+	insert into
+		DYNABOOK(
+			booknumber
+			, title
+			, penname
+			, genre
+			, introduce
+			, book_usernumber
+		) values (
+			dynabook_seq.NEXTVAL
+			, #{title}
+			, #{penname}
+			, #{genre}
+			, #{introduce}
+			, #{book_usernumber}
+		)
+</insert>
+
+<select id="selectBookFromUser" parameterType="int" resultType="book">
+	select
+		booknumber
+		, title
+		, penname
+		, genre
+		, introduce
+		, book_usernumber
+	from
+		dynabook
+	where
+		book_usernumber = #{usernumber}
+		
+</select>
+
+<select id="selectPopularBooksFromGenre" parameterType="string" resultType="hashmap">
+	 select
+	 	booknumber
+	    ,title
+	    ,penname
+	    ,subtitle
+	    ,TO_CHAR(bookdate,'YYYY-MM-DD') AS bookdate
+	    ,genre
+	    ,introduce
+        ,NVL((select sum(hits) from dynabookpart where dynabookpart.PART_BOOKNUMBER = booknumber),0) as bookparthits
+        ,book_usernumber
+	from
+	    dynabook
+	where
+		lower(genre) = lower(#{genre})
+	order by
+		bookparthits desc
+</select>
+
+<update id="updateDynaBook" parameterType="book">
+	update 
+		dynabook
+	set 
+		title = #{title}
+		,penname = #{penname}
+		,genre = #{genre}
+		,introduce = #{introduce}
+	where
+		booknumber = #{booknumber}
+	and
+		book_usernumber = #{book_usernumber}
+</update>
+
+</mapper>

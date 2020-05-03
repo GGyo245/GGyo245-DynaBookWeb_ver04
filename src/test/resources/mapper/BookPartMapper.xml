@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.BookPartMapper">
+
+<select id="selectBookPartOne" parameterType="int" resultType="bookpart">
+	select
+		BOOKPARTNUMBER 
+		,EPISODE    
+		,EPISODETITLE
+		,DBMS_LOB.SUBSTR(text, 1500, 1) as TEXT
+        ,DBMS_LOB.SUBSTR(text, 1500, 1501) as TEXT1
+        ,DBMS_LOB.SUBSTR(text, 1500, 3001) as TEXT2
+        ,DBMS_LOB.SUBSTR(text, 1500, 4501) as TEXT3
+        ,DBMS_LOB.SUBSTR(text, 1500, 6001) as TEXT4
+        ,DBMS_LOB.SUBSTR(text, 1500, 7501) as TEXT5
+        ,DBMS_LOB.SUBSTR(text, 1500, 9001) as TEXT6
+        ,DBMS_LOB.SUBSTR(text, 1500, 10501) as TEXT7
+        ,DBMS_LOB.SUBSTR(text, 1500, 12001) as TEXT8  
+        ,DBMS_LOB.SUBSTR(text, 1500, 13501) as TEXT9
+		,PRICE          
+		,BOOKPARTDATE
+		,HITS         
+		,PART_BOOKNUMBER
+		,WRITERCOMMENT
+	from
+		DYNABOOKPART
+	where
+		BOOKPARTNUMBER = #{BOOKPARTNUMBER}
+</select>
+
+<select id="selectBookPart" parameterType="int" resultType="bookpart">
+	select
+		BOOKPARTNUMBER 
+		,EPISODE    
+		,EPISODETITLE
+		,DBMS_LOB.SUBSTR(text, 1500, 1) as TEXT
+        ,DBMS_LOB.SUBSTR(text, 1500, 1501) as TEXT1
+        ,DBMS_LOB.SUBSTR(text, 1500, 3001) as TEXT2
+        ,DBMS_LOB.SUBSTR(text, 1500, 4501) as TEXT3
+        ,DBMS_LOB.SUBSTR(text, 1500, 6001) as TEXT4
+        ,DBMS_LOB.SUBSTR(text, 1500, 7501) as TEXT5
+        ,DBMS_LOB.SUBSTR(text, 1500, 9001) as TEXT6
+        ,DBMS_LOB.SUBSTR(text, 1500, 10501) as TEXT7
+        ,DBMS_LOB.SUBSTR(text, 1500, 12001) as TEXT8  
+        ,DBMS_LOB.SUBSTR(text, 1500, 13501) as TEXT9
+		,PRICE          
+		,BOOKPARTDATE
+		,HITS         
+		,PART_BOOKNUMBER
+		,WRITERCOMMENT
+	from
+		DYNABOOKPART
+	where
+		PART_BOOKNUMBER = #{PART_BOOKNUMBER}
+</select>
+
+<select id="selectForEpi" parameterType="bookpart" resultType="bookpart">
+	select
+		BOOKPARTNUMBER 
+		,EPISODE    
+		,EPISODETITLE
+		,DBMS_LOB.SUBSTR(text, 1500, 1) as TEXT
+        ,DBMS_LOB.SUBSTR(text, 1500, 1501) as TEXT1
+        ,DBMS_LOB.SUBSTR(text, 1500, 3001) as TEXT2
+        ,DBMS_LOB.SUBSTR(text, 1500, 4501) as TEXT3
+        ,DBMS_LOB.SUBSTR(text, 1500, 6001) as TEXT4
+        ,DBMS_LOB.SUBSTR(text, 1500, 7501) as TEXT5
+        ,DBMS_LOB.SUBSTR(text, 1500, 9001) as TEXT6
+        ,DBMS_LOB.SUBSTR(text, 1500, 10501) as TEXT7
+        ,DBMS_LOB.SUBSTR(text, 1500, 12001) as TEXT8  
+        ,DBMS_LOB.SUBSTR(text, 1500, 13501) as TEXT9    
+		,PRICE          
+		,BOOKPARTDATE
+		,HITS         
+		,PART_BOOKNUMBER
+		,WRITERCOMMENT
+	from
+		DYNABOOKPART
+	where
+		EPISODE = #{episode}
+	
+</select>
+
+<select id="searchLastPart" parameterType="int" resultType="int">
+	select 
+		max(episode)
+	from 
+		dynabookpart
+	where
+		part_booknumber=#{part_booknumber}
+</select>
+
+<insert id="insertDynaBookpart" parameterType="bookpart" useGeneratedKeys="true" keyProperty="bookpartnumber" keyColumn="bookpartnumber">
+	insert into
+		DYNABOOKPART(
+			bookpartnumber
+			, episode
+			, episodetitle
+			, price
+			, TEXT
+			, writercomment
+			, part_booknumber
+		) values (
+			dynabookpart_seq.nextval
+			, #{episode}
+			, #{episodetitle}
+			, #{price}
+			, #{text}
+			, #{writercomment}
+			, #{part_booknumber}
+		)
+</insert>
+
+<update id="bookPartPlusHits" parameterType="bookpart">
+update 
+	dynabookpart
+set
+	hits = #{hits}+1
+where
+	bookpartnumber = #{bookpartnumber}
+</update>
+
+<update id="updateDynaBookpart" parameterType="bookpart">
+	update
+		dynabookpart
+	set
+		episode = #{episode}
+		, episodetitle =  #{episodetitle}
+		, price = #{price}
+		, TEXT = #{text}
+		, writercomment = #{writercomment}
+	where
+		bookpartnumber = #{bookpartnumber}
+
+</update>
+
+</mapper>

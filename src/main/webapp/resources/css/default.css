@@ -1,0 +1,422 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 License: none (public domain) */ 
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address,
+ big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, 
+ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, 
+ aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, 
+ summary, time, mark, audio, video { 
+ 	margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; 
+ } /* HTML5 display-role reset for older browsers */ 
+ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	display: block; 
+  } 
+  body { 
+  	line-height: 1; 
+  } 
+  ol, ul { 
+  	list-style: none; 
+  } 
+  blockquote, q { 
+  	quotes: none; 
+  }
+  blockquote:before, blockquote:after, q:before, q:after { 
+  	content: ''; content: none; 
+  } 
+  table { 
+  	border-collapse: collapse; border-spacing: 0; 
+  }
+  
+a:link { color: black;  text-decoration: none;}
+a:visited { color: black; text-decoration: none;}
+a:active { color: black; text-decoration: none; }
+a:hover{color: black; text-decoration: none;}
+i::after {
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 18.9px;
+    margin-top: 9.9px;
+    margin-left: 9.9px;
+    background-color: #e0e0e0;
+}
+
+@font-face{
+	font-family: "maplestory";
+	src: url("font/maplestory font/Maplestory Bold.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face{
+	font-family: "maplestory2";
+	src: url("font/maplestory font/Maplestory Light.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face{
+	font-family: "bm";
+	src: url("font/rBC1R_TkgdvXlXY8FF2VsPmaosg.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face{
+	font-family: "nexonbold";
+	src: url("font/nexon/NEXONLv1GothicBold.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+
+@font-face{
+	font-family: "nexonregular";
+	src: url("font/nexon/NEXONLv1GothicRegular.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face{
+	font-family: "nanumgothic";
+	src: url("font/NanumGothic.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+#mainlayout{
+    width : 100%;
+    background-color: #1F8CE6;
+}
+.ex{
+       margin-top: 2%;
+    margin-bottom: 2%;
+    margin-right: 5.5%;
+    margin-left: 5.5%;
+}
+#serach{
+    font-size: 16px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    min-width: 100%;
+    border-radius: 3px;
+    height: 32px;
+    line-height: 32px;
+    outline: none;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+#mainrow{
+      padding-top: 1.5%;
+      padding-bottom: 1.5%;
+}
+#serachForm{
+    font-family: inherit;
+    -webkit-appearance: none;
+    box-shadow: none;
+    background: none;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    margin: 0px;
+    padding: 0px;
+    flex-shrink: 0;
+    position: relative;
+    top: -0.5px;
+    padding-right: 3.75px;
+    width: 98%;
+    font-size: 16px;
+    outline: none;
+}
+form{
+    width: 100%;
+}
+.bi-search{
+       fill: #808991;
+    flex-shrink: 0;
+    margin: 5.5px 4.5px 5px 7.5px;
+    width: 24px;
+    height: 24px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+.mainLayoutButton{
+    float: right;
+    margin-left: 2%;
+    box-sizing: border-box;
+    background-color: #1F8CE6;
+    border: 1px solid #99D1FF;
+    border-radius: 3px;
+    padding: 0 16px;
+    font-weight: bold;
+    color: #ffffff;
+    word-break: keep-all;
+    font-size: 13px;
+    height: 30px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    line-height: 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    outline: none;
+}
+.mainLayoutButton2{
+    float: right;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
+    border-radius: 3px;
+    padding: 0 16px;
+    font-weight: bold;
+    color: #1F8CE6;
+    word-break: keep-all;
+    font-size: 13px;
+    height: 30px;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    line-height: 30px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    outline: none;
+}
+#logo{
+       padding: 0;
+}
+.css-nih33d-labelStyle{
+    height: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 5px;
+    line-height: 1;
+    top: 1px;
+    text-align: center;
+    color: #ffffff;
+    vertical-align: top;
+}
+#secondRow{
+    padding-bottom: 0.6%;
+    padding-top: 0.5%;	
+}
+#homeicon{
+    width: 17px;
+}
+#homelogo{
+	width: 100%;
+}
+#whiterow{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 47px;
+    color: #808080;
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: 100%;
+    font-family: maplestory2;
+}
+#secondlayout{
+    border-bottom: 1px #e6e8eb solid;
+    background: #fff;
+}
+.buttonLine{
+	display: block;
+    background: transparent;
+    height: 3px;
+    width: 0;
+    background-color: #99d1ff;
+    width: 54%;
+    position: relative;
+    top: 1px;
+}
+#whiterow > div > a{
+	color: #808080;
+}
+.blank{
+	flex: 0 0 7.3%;
+    max-width: 7.3%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.navi1{
+	padding-left: 0;
+	padding-top: 2%;
+}
+.navi2{
+	padding: 0;
+    padding-left: 7px;
+}
+#userForm{
+	font-family: maplestory;
+	padding-top: 10px;
+}
+#serachMenu{
+	padding-top: 10px;
+	padding-left: 1%
+}
+
+
+
+/* 밑에 검은색 정보 부분 시작 */
+.companyInfo::after {
+  	position: relative;
+    font-size: 10px;
+    content: '|';
+    top: -0.3px;
+    color: #525A61;
+    margin: 0 5.5px;
+}
+.address::after {
+  	position: relative;
+    font-size: 10px;
+    content: '|';
+    top: -0.3px;
+    color: #525A61;
+    margin: 0 5.5px;
+}
+#noticeInfo::after {
+  	position: relative;
+    font-size: 10px;
+    content: '|';
+    top: -0.3px;
+    color: #525A61;
+    margin: 0 5.5px;
+}
+.address{
+	display: inline;
+}
+.address2{
+	display: inline;
+}
+#bottomlayout{
+	width: 100%;
+    color: #ffffff;
+    background: #303538;	
+    padding-bottom: 1.6%;
+    padding-top: 1.6%;
+    margin-top: 3%;
+}
+#company{
+    width: 83px;
+    height: 17px;
+    font-size: 14px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    color: #7e8992;
+    margin-right: 24px;
+    display: inline;
+    cursor: pointer;
+}
+.companyInfo{
+    height: 20px;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.82;
+    color: #7e8992;
+    display: inline;
+    cursor: pointer;
+}
+#companyInfo1{
+   text-align: right;
+}
+#address{
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.82;
+    color: #7e8992;
+}
+#addressrow{
+	margin-bottom: 1.2%;
+    margin-top: 3.6%;
+}
+#noticeInfo{
+	font-size: 20px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    display: inline;
+    cursor: pointer;
+}
+#noticeInfo2{
+	font-size: 20px;
+    font-weight: bold;
+    color: white;
+    line-height: 1;
+    display: inline;
+    cursor: pointer;
+}
+.DynaBookInfo{
+	display: inline;
+	padding-left: 0;
+	padding-right: 3%;
+	cursor: pointer;
+}
+#DynaBookAllInfo{
+	margin-top: 3%;
+}
+#DynaInforow2{
+	margin-top: 3%;
+}
+#subtitle{
+    margin-top: 2%;
+    text-align: center;
+    font-family: maplestory;
+    font-size: xx-large;
+    color: #808080;
+    margin-bottom: 3%;
+}
+
+/*  모바일 화면 적용 여기서 적용시 default.js 에도 적용해주세요  (세훈)*/
+@media ( min-width: 768px ) {
+	 
+	 .blank{
+	 	
+	 }
+	 .buttonLine{
+	 	width: 100%;
+	 }
+	 #secondRow{
+	 	text-align: center;
+	 }
+	 #whiterow{
+	 	text-align: center;
+	 }
+	#userForm{
+		padding-top: 0px;
+	}
+	.navi1{
+		padding-top: 0%;
+	}
+	#DynaBookAllInfo{
+		margin-top: 0%;
+	}
+}
+

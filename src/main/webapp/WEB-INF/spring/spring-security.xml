@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+    xmlns:beans="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
+       
+	<http pattern="/**" auto-config="true" use-expressions="true">
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/uploadNovel" access="hasAnyRole('MEMBER','ADMIN')" method="GET"/>
+		<intercept-url pattern="/modifyNovel" access="hasAnyRole('MEMBER','ADMIN')" method="GET"/>
+		<intercept-url pattern="/insertDynabook" access="hasAnyRole('MEMBER','ADMIN')" method="POST"/>
+		<intercept-url pattern="/updateDynabook" access="hasAnyRole('MEMBER','ADMIN')" method="POST"/>
+		<intercept-url pattern="/uploadEpisode" access="hasAnyRole('MEMBER','ADMIN')" method="GET"/>
+		<intercept-url pattern="/modifyEpisode" access="hasAnyRole('MEMBER','ADMIN')" method="GET"/>
+		<intercept-url pattern="/insertDynaBookpart" access="hasAnyRole('MEMBER','ADMIN')" method="POST"/>
+		<intercept-url pattern="/updateDynabookpart" access="hasAnyRole('MEMBER','ADMIN')" method="POST"/>
+		
+		<intercept-url pattern="/viewer" access="hasAnyRole('MEMBER','ADMIN')" method="GET"/>
+		
+		<intercept-url pattern="/user/**" access="hasAnyRole('MEMBER','ADMIN')"/>
+		
+		<!--  
+		<intercept-url pattern="/user/userOnly" access="hasRole('user')" />
+		<intercept-url pattern="/user/adminOnly" access="hasRole('admin')" />
+		<intercept-url pattern="/user/userAdmin" access="hasAnyRole('user','admin')" />
+		<intercept-url pattern="/user/**" access="permitAll" />
+		-->	
+		<csrf disabled="true"/>
+		
+		<form-login
+			login-page="/loginpage"
+			username-parameter="email"
+			password-parameter="pw"
+			login-processing-url="/user/login"
+			authentication-failure-url="/loginpage?fail=true"
+			default-target-url="/loginSuccess"/>
+		
+		<logout
+			logout-url="/user/logout"
+			logout-success-url="/"
+			invalidate-session="true"	/>
+			
+		<access-denied-handler ref="userDeniedHandler"/>
+		
+		<headers>
+			<frame-options       policy="SAMEORIGIN" />
+			<header name="X-Content-Security-Policy" value="default-src 'self'"/>
+			<header name="X-WebKit-CSP" value="default-src 'self'"/>
+		</headers>
+		
+	</http>
+	
+	<beans:bean class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+     
+    <authentication-manager id="authUser">
+        <authentication-provider ref="SecurityAuthenticationProvider"/>
+    </authentication-manager>
+     
+    <beans:bean id="SecurityAuthenticationProvider" class="kr.co.novelweb.auth.SecurityAuthenticationProvider"/>
+    <beans:bean id="userDeniedHandler" class="kr.co.novelweb.Security.UserDeniedHandler"/>
+    
+</beans:beans>
+
+

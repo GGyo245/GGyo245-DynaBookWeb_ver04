@@ -1,0 +1,13 @@
+@charset "UTF-8";
+#dynabookLogoImg{
+	width: 33%;
+}
+#introduceText{
+    line-height: 1.8em;
+    font-size: 15px;
+    color: #333;
+    word-break: keep-all;
+    word-wrap: break-word;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

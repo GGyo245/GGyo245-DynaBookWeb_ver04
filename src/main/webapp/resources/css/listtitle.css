@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@font-face{
+	font-family: "bm";
+	src: url("font/rBC1R_TkgdvXlXY8FF2VsPmaosg.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+.listTitleImg{
+    width: 35%;
+    background: linear-gradient(to right,rgba(0,0,0,.2) 0,rgba(0,0,0,0) 5%,rgba(0,0,0,0) 95%,rgba(0,0,0,.2) 100% );
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.2) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    border: solid 1px rgba(0,0,0,.1);
+}
+#listTitleRow{
+    margin-left: 2%;
+}
+.listTitlecol{
+	margin-bottom: 2%;
+    margin-top: 2%;
+}
+.listTitleText{
+    vertical-align: top;
+    display: inline;
+    margin-left: 6%;
+    position: absolute;
+    top: 30%;
+    width: 58%;
+    font-family: bm;
+    padding-bottom: 23%;
+    border-bottom: solid 1.5px #e6e8eb;
+}
+.listWriterText{
+    vertical-align: top;
+    display: inline;
+    margin-left: 6%;
+    position: absolute;
+    top: 84%;
+    font-family: bm;
+    color: #808080;
+    font-size: small;
+}
+#LastListTitle{
+	display: none;
+}
+#listCategory{
+	font-family: bm;
+    font-size: xx-large;
+    margin-top: 3%;
+    color: #808080;
+}
+.ListContainer{
+    margin-bottom: 8%;
+    margin-top: 2%;
+}
+@media ( min-width: 991px ) {
+	#LastListTitle{
+		display: initial;
+	}
+	.listWriterText{
+		top: 88%;
+	}
+	.ListContainer{
+		margin-bottom: 2%;
+	}
+	
+}
+@media ( min-width: 520px ) {
+	.listTitleText{
+		padding-bottom: 27.5%;
+		width: 50%;
+	}
+}

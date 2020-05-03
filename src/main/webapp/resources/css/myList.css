@@ -1,0 +1,55 @@
+@charset "UTF-8";
+.mylistMenu{
+	display: inline;
+    color: #636c73;
+    font-family: nexonbold;
+    cursor: pointer;
+}
+.searchImg{
+    margin-left: 3%;
+	width: 100%;	
+    background: linear-gradient(to right,rgba(0,0,0,.2) 0,rgba(0,0,0,0) 5%,rgba(0,0,0,0) 95%,rgba(0,0,0,.2) 100% );
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0px, rgba(0, 0, 0, 0) 5%, rgba(0, 0, 0, 0) 95%, rgba(0, 0, 0, 0.2) 100%);
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+    border: solid 1px rgba(0,0,0,.1);
+}
+.contents{
+    margin-top: 5%;
+}
+.mylistTitle{
+    font-family: nexonregular;
+    font-weight: 600;
+    margin-left: 8px;
+    padding-top: 2%;
+    text-align: center;
+    color: #636c73;
+    margin-top: 3%;
+}
+.mylistepisode{
+	font-family: nexonregular;
+    font-weight: 600;
+    margin-left: 8px;
+    padding-top: 2%;
+    text-align: center;
+    margin-top: 3%;
+}
+.contentsBoard{
+	width: 50%;
+}
+#notFound{
+    width: 100%;
+    text-align: center;
+    font-size: x-large;
+    font-family: nexonregular;
+    font-weight: 700;
+    margin-top: 13%;
+    margin-bottom: 15%;
+}

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.BookmarkMapper">
+
+<insert id="likeUp" parameterType="bookmark">
+insert into 
+	bookmark(
+		bookmark_usernumber
+		,bookmark_bookpartnumber
+	)values(
+		#{bookmark_userNumber}
+		,#{bookmark_bookPartNumber}
+	)
+</insert>
+
+
+<delete id="likeDel" parameterType="bookmark">
+delete from 
+	bookmark
+where 
+	bookmark_usernumber = #{bookmark_userNumber}
+and
+	bookmark_bookpartnumber = #{bookmark_bookPartNumber}
+</delete>
+
+<select id="getBookmark" parameterType="bookmark" resultType="bookmark">
+select
+	bookmark_usernumber
+	,bookmark_bookpartnumber
+from
+	bookmark
+where
+	bookmark_usernumber = #{bookmark_userNumber}
+and
+	bookmark_bookpartnumber=#{bookmark_bookPartNumber}
+</select>
+
+<select id="selectBookMark" parameterType="int" resultType="hashmap">
+	select
+	    b.BOOKNUMBER
+	    ,b.TITLE
+	    ,b.genre
+	    ,p.BOOKPARTNUMBER
+	    ,p.EPISODETITLE
+	from 
+	    bookmark m
+	inner join
+	    dynabookpart p
+	on
+	    p.BOOKPARTNUMBER = m.BOOKMARK_BOOKPARTNUMBER
+	inner join
+	    dynabook b
+	on
+	    b.BOOKNUMBER = p.PART_BOOKNUMBER
+	where
+	    m.BOOKMARK_USERNUMBER = #{usernumber}
+</select>
+
+</mapper>

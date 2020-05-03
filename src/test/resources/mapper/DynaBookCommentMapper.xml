@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.DynaBookCommentMapper">
+<select id="getComment" parameterType="hashmap" resultType="hashmap">
+select
+	c.commentnumber as COMMENTNUMBER
+	,c.usercomment	as USERCOMMENT
+	,c.hits			as HITS
+	,to_char(c.commentdate,'YYYY-MM-DD') as COMMENTDATE
+	,c.comment_bookpartnumber	as COMMENT_BOOKPARTNUMBER
+	,c.comment_usernumber	as COMMENT_USERNUMBER
+	,u.nick as NICK
+	,u.email as EMAIL
+from
+	dynabookcomment c, dynabookuser u
+
+where
+	c.comment_bookpartnumber = #{comment_bookpartnumber}
+and
+	c.comment_usernumber = u.usernumber
+order by
+	c.commentdate desc
+	
+
+</select>
+
+
+<select id="getCommentCount" parameterType="int" resultType="int">
+select 
+	count(*)
+from
+	dynabookcomment
+where
+	comment_bookpartnumber = #{comment_bookpartnumber}
+</select>
+
+<select id ="getCommentByHits" parameterType="int" resultType="hashmap">
+select
+	c.commentnumber as COMMENTNUMBER
+	,c.usercomment	as USERCOMMENT
+	,c.hits			as HITS
+	,to_char(c.commentdate,'YYYY-MM-DD') as COMMENTDATE
+	,c.comment_bookpartnumber	as COMMENT_BOOKPARTNUMBER
+	,c.comment_usernumber	as COMMENT_USERNUMBER
+	,u.nick as NICK
+	,u.email as EMAIL
+from
+	dynabookcomment c, dynabookuser u
+
+where
+	c.comment_bookpartnumber = #{comment_bookpartnumber}
+and
+	c.comment_usernumber = u.usernumber
+and
+	c.hits > 0
+order by
+	c.hits desc
+</select>
+
+<select id="getCommentOne" parameterType="int" resultType="comment">
+select
+	commentnumber
+	,usercomment
+	,hits
+	,to_char(commentdate, 'YYYY-MM-DD') as commentdate
+	,comment_bookpartnumber
+	,comment_usernumber
+	
+from
+	dynabookcomment
+where
+	commentnumber = #{commentnumber}
+</select>
+
+<update id="plusHits" parameterType="comment">
+update
+	dynabookcomment
+set
+	hits = #{hits}+1
+where
+	commentnumber = #{commentnumber}
+</update>
+
+<insert id="insertComment" parameterType="comment">
+insert into
+	dynabookcomment(
+		commentnumber
+		,usercomment
+		,comment_bookpartnumber
+		,comment_usernumber
+	)values(
+		comment_seq.nextval
+		,#{usercomment}
+		,#{comment_bookpartnumber}
+		,#{comment_usernumber}
+	)
+</insert>
+
+<delete id="commentDelete" parameterType="int">
+   delete from
+      dynabookcomment
+   where
+      commentnumber=#{commentnumber}
+</delete>
+
+<update id="updateComment" parameterType="comment">
+	update
+		dynabookcomment
+	set
+		usercomment = #{usercomment}
+	where
+		commentnumber = #{commentnumber}
+
+</update>
+
+</mapper>

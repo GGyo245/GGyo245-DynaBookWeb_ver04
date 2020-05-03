@@ -1,0 +1,63 @@
+@charset "UTF-8";
+@font-face{
+	font-family: "maplestory";
+	src: url("font/maplestory font/Maplestory Bold.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+@font-face{
+	font-family: "maplestory2";
+	src: url("font/maplestory font/Maplestory Light.ttf")format("truetype");
+	font-style: normal;
+	font-weight: normal;
+}
+body{
+	background: #dcecf8;
+}
+#headLine{
+  font-size: 60px;
+  padding: 20px;
+  color : #f00;
+}
+#subheadLine{
+  color : #f00;
+}
+#tologin{
+  padding-right: 15px;
+}
+.warning{
+  font-size: 12px;
+  padding: 10px;
+  color: red;
+}
+.success{
+  font-size: 12px;
+  padding: 10px;
+  color:green;
+}
+.form.group{
+  padding: 10px;
+}
+#logo{
+	width: 90%;
+	padding-right: 8%;
+	margin-top: 3%;
+}
+#titleLine{
+    border-bottom: 1px #c0c0c0 solid;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+#homelogo{
+	font-family: maplestory;
+    text-align: center;
+    font-size: 36px;
+    color: #1F8CE6;
+}
+#tologin{
+	margin-bottom: 10%;
+}
+#submitbtn{
+    font-family: maplestory;
+	
+}

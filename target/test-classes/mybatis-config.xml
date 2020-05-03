@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="book" type="kr.co.novelweb.VO.DynaBookVO"/>
+		<typeAlias alias="user" type="kr.co.novelweb.VO.DynaBookUserVO"/>
+		<typeAlias alias="bookmark" type="kr.co.novelweb.VO.bookmarkVO" />
+		<typeAlias alias="bookpart" type="kr.co.novelweb.VO.BookPartVO" />
+		<typeAlias alias="emotion" type="kr.co.novelweb.VO.EmotionVO" />
+		<typeAlias alias="back" type="kr.co.novelweb.VO.BackGroundVO" />
+		<typeAlias alias="purchase" type="kr.co.novelweb.VO.PurchaseVO" />
+		<typeAlias alias="comment" type="kr.co.novelweb.VO.DynaBookCommentVO" />
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="mapper/DynaBookMapper.xml"/>
+		<mapper resource="mapper/DynaBookUserMapper.xml"/>
+		<mapper resource="mapper/BookPartMapper.xml"/>
+		<mapper resource="mapper/BookmarkMapper.xml"/>
+		<mapper resource="mapper/EmotionMapper.xml"/>
+		<mapper resource="mapper/BackGroundMapper.xml"/>
+		<mapper resource="mapper/PurchaseMapper.xml"/>
+		<mapper resource="mapper/DynaBookCommentMapper.xml"/>
+	</mappers>
+
+</configuration>

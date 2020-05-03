@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.PurchaseMapper">
+	
+<insert id="insertPurchase" parameterType="purchase">
+	insert into
+		PURCHASE(
+			PURCHASE_USERNUMBER
+			,PURCHASE_BOOKPARTNUMBER
+		)values(
+			#{purchase_usernumber}
+			,#{purchase_bookpartnumber}
+		)
+</insert>
+
+<select id="slectPurchase" parameterType="int" resultType="purchase">
+	select 
+		PURCHASE_USERNUMBER
+		,PURCHASE_BOOKPARTNUMBER
+		,TO_CHAR(PURCHASEDATE,'YYYY-MM-DD')
+	from
+		PURCHASE
+	where 
+		PURCHASE_USERNUMBER = #{purchase_usernumber}
+	order by
+		PURCHASEDATE
+</select>
+
+<select id="slectPurchaseHash" parameterType="int" resultType="hashmap">
+	select
+	    b.BOOKNUMBER
+	    ,b.TITLE
+	    ,b.genre
+	    ,p.BOOKPARTNUMBER
+	    ,p.EPISODETITLE
+	from 
+	    purchase pu
+	inner join
+	    dynabookpart p
+	on
+	    p.BOOKPARTNUMBER = pu.PURCHASE_BOOKPARTNUMBER
+	inner join
+	    dynabook b
+	on
+	    b.BOOKNUMBER = p.PART_BOOKNUMBER
+	where
+	    pu.PURCHASE_USERNUMBER = #{usernumber}
+	order by
+        pu.PURCHASEDATE desc
+</select>
+
+</mapper>

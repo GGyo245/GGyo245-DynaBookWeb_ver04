@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.EmotionMapper">
+
+<insert id="insertEmotion" parameterType="emotion">
+	insert into emotion(
+		emotion_bookpartnumber
+	    ,pagenumber
+	    ,anger
+	    ,disgust
+	    ,fear
+	    ,joy
+	    ,sadness
+	)values(
+		#{emotion_bookpartnumber}
+	    ,#{pagenumber}
+	    ,#{anger}
+	    ,#{disgust}
+	    ,#{fear}
+	    ,#{joy}
+	    ,#{sadness}
+	)
+	
+</insert>
+
+<select id="getEmotion" parameterType="emotion" resultType="emotion">
+	select 
+		emotion_bookpartnumber
+		,pagenumber
+		,anger
+		,disgust
+		,fear
+		,joy
+		,sadness
+	from
+		emotion
+	where
+		emotion_bookpartnumber = #{emotion_bookpartnumber}
+	and
+		pagenumber = #{pagenumber}
+</select>
+
+<delete id="deleteEmotion" parameterType="int">
+	delete from
+		emotion
+	where
+		emotion_bookpartnumber = #{emotion_bookpartnumber}
+</delete>
+
+</mapper>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.novelweb.DAO.DynaBookUserMapper">
+
+<insert id="insertUser" parameterType="user">
+	insert into 
+    dynabookuser(
+        usernumber 
+        ,name
+        ,email
+        ,nick
+        ,pw
+    )values(
+        dynabookusernumber_seq.nextval
+        ,#{name}
+        ,#{email}
+        ,#{nick}
+        ,#{pw}
+    )
+</insert>
+
+<select id="selectUserOne" parameterType="string" resultType="user">
+	select 
+		usernumber
+		,name
+		,email
+		,nick
+		,pw
+		,userinputdate
+		,authority
+		,sex
+		,age
+		,account_balance
+	from 
+		dynabookuser
+	where
+		email = #{email}
+</select>
+
+<select	id="selectUserOneFromNumber" parameterType="int" resultType="user">
+	select 
+		usernumber
+		,name
+		,email
+		,nick
+		,pw
+		,userinputdate
+		,authority
+		,sex
+		,age
+		,account_balance
+	from 
+		dynabookuser
+	where
+		usernumber = #{usernumber}
+</select>
+
+<update id="updateNick" parameterType="user">
+	update 
+		dynabookuser
+	set
+		nick = #{nick}
+	where
+		email = #{email}
+</update>
+
+<update id="updatePW" parameterType="user">
+	update
+		dynabookuser
+	set
+		pw = #{pw}
+	where
+		email = #{email}
+</update>
+
+<update id="updateAccount_balance" parameterType="user">
+	update
+		dynabookuser
+	set
+		account_balance = #{account_balance}
+	where
+		usernumber = #{usernumber}
+</update>
+
+<update id="deleteUser" parameterType="int">
+	update
+		dynabookuser
+	set
+		authority = 'delete'
+	where
+		usernumber = #{usernumber}
+
+</update>
+</mapper>
